@@ -99,6 +99,18 @@
 		>;
 	};
 
+	/* pin mux for pins P9_24, P9_26 to UART1 - Mar2019 */
+	uart1_pins: pinmux_uart1_pins {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x980, PIN_INPUT_PULLUP | MUX_MODE0)	/* uart1_rxd.uart1_rxd */
+			AM33XX_IOPAD(0x984, PIN_OUTPUT_PULLDOWN | MUX_MODE0)	/* uart1_txd.uart1_txd */
+		>;
+	};
+
+
+
+
+
 	clkout2_pin: pinmux_clkout2_pin {
 		pinctrl-single,pins = <
 			AM33XX_IOPAD(0x9b4, PIN_OUTPUT_PULLDOWN | MUX_MODE3)	/* xdma_event_intr1.clkout2 */
@@ -187,6 +199,16 @@
 
 	status = "okay";
 };
+
+/* activate UART1 - Mar2019*/
+&uart1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart1_pins>;
+
+	status = "okay";
+};
+
+
 
 &usb {
 	status = "okay";

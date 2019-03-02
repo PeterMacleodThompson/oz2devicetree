@@ -26,3 +26,15 @@
 		opp-supported-hw = <0x06 0x0100>;
 	};
 };
+
+
+/**
+ * DOC:  Activate UART1 on Beaglebone Black - Mar2019
+ * 
+ * Activate UART1 on BBB device tree in 2 part:
+ *	activate P9 pins 24,26 via pin_mux
+ * 	activate UART1 defined in am33xx.dtsi 
+ * 	updates done in am335x-bone-common.dtsi beside UART0
+ * 	March 1, 2019  - grep Mar2019 
+ */
+
