@@ -85,6 +85,15 @@
 		>;
 	};
 
+	/* pin mux for pins P9_17, P9_18 for i2c1 - Mar2019 */
+	i2c1_pins: pinmux_i2c1_pins {
+		pinctrl-single,pins = <
+			AM33XX_IOPAD(0x95c, PIN_INPUT_PULLUP | MUX_MODE2)	/* spi0_cs0.i2c1_scl */
+			AM33XX_IOPAD(0x958, PIN_INPUT_PULLUP | MUX_MODE2)	/* spi0_d1.i2c1_sda */
+		>;
+	};
+
+
 	i2c2_pins: pinmux_i2c2_pins {
 		pinctrl-single,pins = <
 			AM33XX_IOPAD(0x978, PIN_INPUT_PULLUP | MUX_MODE3)	/* uart1_ctsn.i2c2_sda */
@@ -242,6 +251,7 @@
 	status = "okay";
 };
 
+
 &i2c0 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c0_pins>;
@@ -263,6 +273,15 @@
 			reg = <0 0x100>;
 		};
 	};
+};
+
+/* Activate pins P9_17, P9_18 for i2c1 - Mar2019 */
+&i2c1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c1_pins>;
+
+	status = "okay";
+	clock-frequency = <100000>;
 };
 
 &i2c2 {
